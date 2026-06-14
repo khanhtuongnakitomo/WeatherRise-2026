@@ -60,15 +60,38 @@ async def resolve_time_range(req: TimeRequest):
             start = now.strftime("%Y-%m-%d")
             end = (now + timedelta(days=3)).strftime("%Y-%m-%d")
         else:
-            # Use dateparser for other expressions
-            parsed = dateparser.parse(req.raw_text, settings=settings)
-            if parsed:
-                start = parsed.strftime("%Y-%m-%d")
-                end = (parsed + timedelta(days=1)).strftime("%Y-%m-%d")
+            import re
+            weekday_match = re.search(r'\b(this|next)\s+(monday|tuesday|wednesday|thursday|friday|saturday|sunday)\b', raw)
+            if weekday_match:
+                modifier = weekday_match.group(1)
+                day_str = weekday_match.group(2)
+                weekdays = {"monday": 0, "tuesday": 1, "wednesday": 2, "thursday": 3, "friday": 4, "saturday": 5, "sunday": 6}
+                target_day = weekdays[day_str]
+                current_day = now.weekday()
+                
+                days_ahead = (target_day - current_day) % 7
+                
+                if modifier == "this":
+                    pass  # days_ahead is already correctly 0-6 days ahead
+                elif modifier == "next":
+                    if days_ahead == 0:
+                        days_ahead = 7
+                    else:
+                        days_ahead += 7
+                
+                start = (now + timedelta(days=days_ahead)).strftime("%Y-%m-%d")
+                end = start
             else:
-                # Default to today
-                start = now.strftime("%Y-%m-%d")
-                end = (now + timedelta(days=1)).strftime("%Y-%m-%d")
+                # Use dateparser for other expressions
+                settings["PREFER_DATES_FROM"] = "future"
+                parsed = dateparser.parse(req.raw_text, settings=settings)
+                if parsed:
+                    start = parsed.strftime("%Y-%m-%d")
+                    end = start
+                else:
+                    # Default to today
+                    start = now.strftime("%Y-%m-%d")
+                    end = start
 
         start_dt = datetime.strptime(start, "%Y-%m-%d")
         end_dt = datetime.strptime(end, "%Y-%m-%d")

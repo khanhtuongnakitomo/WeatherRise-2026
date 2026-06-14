@@ -37,7 +37,7 @@ class MultiSourceWeatherFetcher:
     async def _fetch_with_cache(self, cache, client, requirement, source_code):
         lat = round(requirement.latitude, 3) if requirement.latitude else 0
         lon = round(requirement.longitude, 3) if requirement.longitude else 0
-        key = cache.generate_key("raw_weather", source_code, lat, lon, requirement.start_date, requirement.end_date)
+        key = cache.generate_key("raw_weather", source_code, lat, lon, requirement.start_time, requirement.end_time)
         
         cached_data = await cache.get(key)
         if cached_data:

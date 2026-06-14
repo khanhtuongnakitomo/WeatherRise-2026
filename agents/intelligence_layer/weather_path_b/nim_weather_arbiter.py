@@ -74,7 +74,7 @@ class NIMWeatherArbiter:
         lat = round(requirement.latitude, 2) if requirement.latitude else 0
         lon = round(requirement.longitude, 2) if requirement.longitude else 0
         source_str = "-".join(sorted([s.source_code for s in source_scores]))
-        cache_key = cache.generate_key("arbiter", lat, lon, requirement.domain, requirement.start_date, source_str)
+        cache_key = cache.generate_key("arbiter", lat, lon, requirement.domain, requirement.start_time, source_str)
         
         cached_data = await cache.get(cache_key)
         if cached_data:

@@ -150,27 +150,27 @@ class NIMPromptBuilder:
         ]
 
     def _slim_gold(self, weather_dict: dict[str, Any]) -> dict[str, Any]:
-        """Reduce token footprint by keeping only the fields NIM needs for natural language generation."""
+        """Keep essential fields for the NIM prompt."""
         if not isinstance(weather_dict, dict):
             return weather_dict
             
         slim = {
+            "request_id": weather_dict.get("request_id"),
+            "forecast_time_local": weather_dict.get("forecast_time_local"),
+            "location_name": weather_dict.get("location_name"),
             "selected_weather": weather_dict.get("selected_weather"),
             "confidence": weather_dict.get("confidence"),
             "sources_used": weather_dict.get("sources_used"),
             "sources_rejected": weather_dict.get("sources_rejected"),
+            "warnings": weather_dict.get("warnings", []),
         }
         
-        arbiter = weather_dict.get("arbiter_decision") or {}
-        if arbiter:
-            slim["arbiter_decision"] = {
-                "arbiter_reason": arbiter.get("arbiter_reason"),
-                "risk_interpretation": arbiter.get("risk_interpretation"),
-                "warnings": arbiter.get("warnings")
-            }
-            
         fused = weather_dict.get("fused_weather") or {}
         if fused and fused.get("fused_values"):
             slim["fused_weather"] = {"fused_values": fused.get("fused_values")}
+            
+        arb = weather_dict.get("arbiter_decision") or {}
+        if arb and arb.get("source_conflicts"):
+            slim["source_conflicts"] = arb.get("source_conflicts")
             
         return slim

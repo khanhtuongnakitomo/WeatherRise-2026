@@ -223,26 +223,34 @@ class TourismContextAgent(BaseContextAgent):
             existing_ids = {r.get("place_id") for r in (kb_restaurants.data or [])}
             all_new_rests = []
 
+            rest_tasks = []
             for c_lat, c_lon in cluster_centroids:
-                try:
-                    mcp_rest_result = await self.call_mcp("place.searchRestaurants", {
+                rest_tasks.append(
+                    self.call_mcp("place.searchRestaurants", {
                         "location": location,
                         "lat": c_lat,
                         "lon": c_lon,
                         "radius_km": 10.0,
                         "limit": 15,
                     })
-                    mcp_restaurants = (
-                        mcp_rest_result.get("output", {}).get("restaurants", [])
-                        if isinstance(mcp_rest_result, dict) else []
-                    )
-                    for r in mcp_restaurants:
-                        pid = r.get("place_id")
-                        if pid and pid not in existing_ids:
-                            all_new_rests.append(r)
-                            existing_ids.add(pid)
-                except Exception as e:
-                    print(f"[TourismAgent] MCP place.searchRestaurants failed for centroid ({c_lat:.4f},{c_lon:.4f}): {e}")
+                )
+            
+            rest_results = await asyncio.gather(*rest_tasks, return_exceptions=True)
+            
+            for (c_lat, c_lon), mcp_rest_result in zip(cluster_centroids, rest_results):
+                if isinstance(mcp_rest_result, Exception):
+                    print(f"[TourismAgent] MCP place.searchRestaurants failed for centroid ({c_lat:.4f},{c_lon:.4f}): {mcp_rest_result}")
+                    continue
+                
+                mcp_restaurants = (
+                    mcp_rest_result.get("output", {}).get("restaurants", [])
+                    if isinstance(mcp_rest_result, dict) else []
+                )
+                for r in mcp_restaurants:
+                    pid = r.get("place_id")
+                    if pid and pid not in existing_ids:
+                        all_new_rests.append(r)
+                        existing_ids.add(pid)
 
             if all_new_rests:
                 kb_restaurants.data = all_new_rests + (kb_restaurants.data or [])

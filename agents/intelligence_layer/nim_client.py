@@ -23,7 +23,7 @@ class NIMClient:
         base_url: str | None = None,
         model: str | None = None,
         temperature: float = 0.2,
-        max_tokens: int = 2048,
+        max_tokens: int = 4096,
     ):
         self.base_url = base_url or os.getenv(
             "NIM_LLM_BASE_URL",

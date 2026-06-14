@@ -82,13 +82,14 @@ class ResponseBuilder:
         Handles common model behaviors like wrapping JSON in code fences.
         """
         if not content:
+            print("[ResponseBuilder] NIM content is empty.")
             return {}
 
         # Direct JSON parse
         try:
             return json.loads(content)
-        except (json.JSONDecodeError, TypeError):
-            pass
+        except (json.JSONDecodeError, TypeError) as e:
+            err_msg1 = str(e)
 
         # Handle code-fenced JSON (```json ... ```)
         stripped = content.strip()
@@ -106,9 +107,11 @@ class ResponseBuilder:
         if json_match:
             try:
                 return json.loads(json_match.group())
-            except (json.JSONDecodeError, TypeError):
+            except (json.JSONDecodeError, TypeError) as e:
+                print(f"[ResponseBuilder] Failed to parse extracted JSON: {e}\nRaw extracted:\n{json_match.group()[:200]}...")
                 pass
 
+        print(f"[ResponseBuilder] Failed to find valid JSON in NIM response. Initial error: {err_msg1}\nRaw Content:\n{content}")
         return {}
 
     def _extract_text_fragments(self, llm_json: dict[str, Any]) -> dict[str, Any]:

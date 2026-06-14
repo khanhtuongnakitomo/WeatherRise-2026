@@ -1,0 +1,651 @@
+Simulated prompts saved to /raid/team/weatherise/workspaces/yo/WeatherRise-2026/simulated_prompts_output.txt
+": "tourism",
+  "intent": "travel_planning",
+  "raw_user_input": "Plan a 3-day trip in Da Nang and avoid heavy rain.",
+  "user_constraints": [
+    "avoid heavy rain",
+    "prefer outdoor sightseeing when safe"
+  ],
+  "knowledge_context": {
+    "tourist_attractions": "My Khe Beach and Son Tra are outdoor. Han Market and Cham Museum are indoor backups."
+  },
+  "mcp_context": {
+    "coordinates": null,
+    "weather_forecast": null,
+    "realtime_weather": null,
+    "places": [
+      {
+        "place_id": "a1",
+        "name": "Beach",
+        "latitude": 16.0,
+        "longitude": 108.2,
+        "is_indoor": false,
+        "category": "attraction"
+      },
+      {
+        "place_id": "a2",
+        "name": "Museum",
+        "latitude": 16.0,
+        "longitude": 108.2,
+        "is_indoor": true,
+        "category": "attraction"
+      }
+    ],
+    "restaurants": [
+      {
+        "place_id": "r0",
+        "name": "Rest 0",
+        "latitude": 16.0,
+        "longitude": 108.2,
+        "is_indoor": true,
+        "category": "restaurant"
+      },
+      {
+        "place_id": "r1",
+        "name": "Rest 1",
+        "latitude": 16.0,
+        "longitude": 108.2,
+        "is_indoor": true,
+        "category": "restaurant"
+      },
+      {
+        "place_id": "r2",
+        "name": "Rest 2",
+        "latitude": 16.0,
+        "longitude": 108.2,
+        "is_indoor": true,
+        "category": "restaurant"
+      },
+      {
+        "place_id": "r3",
+        "name": "Rest 3",
+        "latitude": 16.0,
+        "longitude": 108.2,
+        "is_indoor": true,
+        "category": "restaurant"
+      },
+      {
+        "place_id": "r4",
+        "name": "Rest 4",
+        "latitude": 16.0,
+        "longitude": 108.2,
+        "is_indoor": true,
+        "category": "restaurant"
+      }
+    ],
+    "opening_hours": null,
+    "distance_matrix": null,
+    "trip_plan_context": {
+      "duration_days": 1,
+      "location": "Da Nang",
+      "planning_mode": "heuristic_v3",
+      "days": [
+        {
+          "day": 1,
+          "theme": "Explore Da Nang",
+          "primary_area": "Da Nang",
+          "stops": [
+            {
+              "order": 1,
+              "place_id": "r0",
+              "name": "Rest 0",
+              "lat": 16.0,
+              "lon": 108.2,
+              "time_block": "breakfast",
+              "planned_time": "08:00",
+              "planned_time_window": "07:30 - 09:00",
+              "is_indoor": true,
+              "category": "restaurant"
+            },
+            {
+              "order": 2,
+              "place_id": "a1",
+              "name": "Beach",
+              "lat": 16.0,
+              "lon": 108.2,
+              "time_block": "morning_activity",
+              "planned_time": "10:00",
+              "planned_time_window": "09:00 - 12:00",
+              "is_indoor": false,
+              "category": "attraction"
+            },
+            {
+              "order": 3,
+              "place_id": "r1",
+              "name": "Rest 1",
+              "lat": 16.0,
+              "lon": 108.2,
+              "time_block": "lunch",
+              "planned_time": "12:30",
+              "planned_time_window": "12:00 - 13:30",
+              "is_indoor": true,
+              "category": "restaurant"
+            },
+            {
+              "order": 4,
+              "place_id": "a2",
+              "name": "Museum",
+              "lat": 16.0,
+              "lon": 108.2,
+              "time_block": "afternoon_activity",
+              "planned_time": "15:00",
+              "planned_time_window": "13:30 - 17:30",
+              "is_indoor": true,
+              "category": "attraction"
+            },
+            {
+              "order": 5,
+              "place_id": "r2",
+              "name": "Rest 2",
+              "lat": 16.0,
+              "lon": 108.2,
+              "time_block": "dinner",
+              "planned_time": "18:30",
+              "planned_time_window": "18:00 - 20:00",
+              "is_indoor": true,
+              "category": "restaurant"
+            }
+          ],
+          "backup_options": [
+            {
+              "place_id": "danang_cham_museum",
+              "name": "Cham Museum",
+              "reason": "Indoor backup"
+            },
+            {
+              "place_id": "danang_han_market",
+              "name": "Han Market",
+              "reason": "Indoor backup"
+            },
+            {
+              "place_id": "danang_lotte_mart",
+              "name": "Lotte Mart",
+              "reason": "Indoor backup"
+            },
+            {
+              "place_id": "danang_vincom_plaza",
+              "name": "Vincom Plaza",
+              "reason": "Indoor backup"
+            }
+          ],
+          "date": null,
+          "weather_condition": null,
+          "temp_range": null,
+          "rain_prob": null
+        }
+      ],
+      "weather_aware": true
+    },
+    "time_range_resolved": null,
+    "external_risk_data": null
+  },
+  "weather_data_quality": {
+    "missing_fields": [],
+    "confidence": "high",
+    "notes": [
+      "Mock data for model benchmarking. Do not treat as live forecast."
+    ]
+  },
+  "prediction_engine_result": {
+    "domain": "tourism",
+    "prediction_summary": "Simulated prediction summary",
+    "recommendation_summary": "Simulated recommendation summary",
+    "risk_assessment": {
+      "overall_risk": "low"
+    },
+    "evidence": [
+      "Evidence 1"
+    ],
+    "warnings": [],
+    "weather_stats": {}
+  },
+  "required_output_schema": {
+    "prediction": "string \u2014 1-2 sentence weather prediction",
+    "recommendation": "string \u2014 concrete action recommendation",
+    "explanation": "string \u2014 brief explanation of why this advice is given",
+    "final_answer": "string \u2014 concise, user-friendly summary answer (3-5 sentences)"
+  },
+  "hard_rules": [
+    "Do not change risk levels from the prediction_engine_result.",
+    "Do not add typhoon, flood, or official warning unless present in input.",
+    "Base recommendations only on the provided evidence and context.",
+    "Return valid JSON matching the required_output_schema."
+  ]
+}
+
+
+=== Case: tourism_heat_risk_001 ===
+{
+  "task": "Generate a final Weatherise response for Path A.",
+  "domain": "tourism",
+  "intent": "travel_planning",
+  "raw_user_input": "Plan an outdoor sightseeing day in Da Nang but avoid extreme heat.",
+  "user_constraints": [
+    "avoid extreme heat",
+    "prefer morning outdoor activities"
+  ],
+  "knowledge_context": {
+    "tourist_attractions": "My Khe Beach and Son Tra are outdoor. Han Market and Cham Museum are indoor backups."
+  },
+  "mcp_context": {
+    "coordinates": null,
+    "weather_forecast": null,
+    "realtime_weather": null,
+    "places": [
+      {
+        "place_id": "a1",
+        "name": "Beach",
+        "latitude": 16.0,
+        "longitude": 108.2,
+        "is_indoor": false,
+        "category": "attraction"
+      },
+      {
+        "place_id": "a2",
+        "name": "Museum",
+        "latitude": 16.0,
+        "longitude": 108.2,
+        "is_indoor": true,
+        "category": "attraction"
+      }
+    ],
+    "restaurants": [
+      {
+        "place_id": "r0",
+        "name": "Rest 0",
+        "latitude": 16.0,
+        "longitude": 108.2,
+        "is_indoor": true,
+        "category": "restaurant"
+      },
+      {
+        "place_id": "r1",
+        "name": "Rest 1",
+        "latitude": 16.0,
+        "longitude": 108.2,
+        "is_indoor": true,
+        "category": "restaurant"
+      },
+      {
+        "place_id": "r2",
+        "name": "Rest 2",
+        "latitude": 16.0,
+        "longitude": 108.2,
+        "is_indoor": true,
+        "category": "restaurant"
+      },
+      {
+        "place_id": "r3",
+        "name": "Rest 3",
+        "latitude": 16.0,
+        "longitude": 108.2,
+        "is_indoor": true,
+        "category": "restaurant"
+      },
+      {
+        "place_id": "r4",
+        "name": "Rest 4",
+        "latitude": 16.0,
+        "longitude": 108.2,
+        "is_indoor": true,
+        "category": "restaurant"
+      }
+    ],
+    "opening_hours": null,
+    "distance_matrix": null,
+    "trip_plan_context": {
+      "duration_days": 1,
+      "location": "Da Nang",
+      "planning_mode": "heuristic_v3",
+      "days": [
+        {
+          "day": 1,
+          "theme": "Explore Da Nang",
+          "primary_area": "Da Nang",
+          "stops": [
+            {
+              "order": 1,
+              "place_id": "r0",
+              "name": "Rest 0",
+              "lat": 16.0,
+              "lon": 108.2,
+              "time_block": "breakfast",
+              "planned_time": "08:00",
+              "planned_time_window": "07:30 - 09:00",
+              "is_indoor": true,
+              "category": "restaurant"
+            },
+            {
+              "order": 2,
+              "place_id": "a1",
+              "name": "Beach",
+              "lat": 16.0,
+              "lon": 108.2,
+              "time_block": "morning_activity",
+              "planned_time": "10:00",
+              "planned_time_window": "09:00 - 12:00",
+              "is_indoor": false,
+              "category": "attraction"
+            },
+            {
+              "order": 3,
+              "place_id": "r1",
+              "name": "Rest 1",
+              "lat": 16.0,
+              "lon": 108.2,
+              "time_block": "lunch",
+              "planned_time": "12:30",
+              "planned_time_window": "12:00 - 13:30",
+              "is_indoor": true,
+              "category": "restaurant"
+            },
+            {
+              "order": 4,
+              "place_id": "a2",
+              "name": "Museum",
+              "lat": 16.0,
+              "lon": 108.2,
+              "time_block": "afternoon_activity",
+              "planned_time": "15:00",
+              "planned_time_window": "13:30 - 17:30",
+              "is_indoor": true,
+              "category": "attraction"
+            },
+            {
+              "order": 5,
+              "place_id": "r2",
+              "name": "Rest 2",
+              "lat": 16.0,
+              "lon": 108.2,
+              "time_block": "dinner",
+              "planned_time": "18:30",
+              "planned_time_window": "18:00 - 20:00",
+              "is_indoor": true,
+              "category": "restaurant"
+            }
+          ],
+          "backup_options": [
+            {
+              "place_id": "danang_cham_museum",
+              "name": "Cham Museum",
+              "reason": "Indoor backup"
+            },
+            {
+              "place_id": "danang_han_market",
+              "name": "Han Market",
+              "reason": "Indoor backup"
+            },
+            {
+              "place_id": "danang_lotte_mart",
+              "name": "Lotte Mart",
+              "reason": "Indoor backup"
+            },
+            {
+              "place_id": "danang_vincom_plaza",
+              "name": "Vincom Plaza",
+              "reason": "Indoor backup"
+            }
+          ],
+          "date": null,
+          "weather_condition": null,
+          "temp_range": null,
+          "rain_prob": null
+        }
+      ],
+      "weather_aware": true
+    },
+    "time_range_resolved": null,
+    "external_risk_data": null
+  },
+  "weather_data_quality": {
+    "missing_fields": [],
+    "confidence": "high",
+    "notes": [
+      "Mock heat-risk case for model benchmarking."
+    ]
+  },
+  "prediction_engine_result": {
+    "domain": "tourism",
+    "prediction_summary": "Simulated prediction summary",
+    "recommendation_summary": "Simulated recommendation summary",
+    "risk_assessment": {
+      "overall_risk": "low"
+    },
+    "evidence": [
+      "Evidence 1"
+    ],
+    "warnings": [],
+    "weather_stats": {}
+  },
+  "required_output_schema": {
+    "prediction": "string \u2014 1-2 sentence weather prediction",
+    "recommendation": "string \u2014 concrete action recommendation",
+    "explanation": "string \u2014 brief explanation of why this advice is given",
+    "final_answer": "string \u2014 concise, user-friendly summary answer (3-5 sentences)"
+  },
+  "hard_rules": [
+    "Do not change risk levels from the prediction_engine_result.",
+    "Do not add typhoon, flood, or official warning unless present in input.",
+    "Base recommendations only on the provided evidence and context.",
+    "Return valid JSON matching the required_output_schema."
+  ]
+}
+
+
+=== Case: tourism_good_weather_001 ===
+{
+  "task": "Generate a final Weatherise response for Path A.",
+  "domain": "tourism",
+  "intent": "travel_planning",
+  "raw_user_input": "Plan a relaxed outdoor day in Da Nang if the weather is good.",
+  "user_constraints": [
+    "prefer outdoor sightseeing",
+    "avoid rain"
+  ],
+  "knowledge_context": {
+    "tourist_attractions": "My Khe Beach and Son Tra are outdoor. Han Market and Cham Museum are indoor backups."
+  },
+  "mcp_context": {
+    "coordinates": null,
+    "weather_forecast": null,
+    "realtime_weather": null,
+    "places": [
+      {
+        "place_id": "a1",
+        "name": "Beach",
+        "latitude": 16.0,
+        "longitude": 108.2,
+        "is_indoor": false,
+        "category": "attraction"
+      },
+      {
+        "place_id": "a2",
+        "name": "Museum",
+        "latitude": 16.0,
+        "longitude": 108.2,
+        "is_indoor": true,
+        "category": "attraction"
+      }
+    ],
+    "restaurants": [
+      {
+        "place_id": "r0",
+        "name": "Rest 0",
+        "latitude": 16.0,
+        "longitude": 108.2,
+        "is_indoor": true,
+        "category": "restaurant"
+      },
+      {
+        "place_id": "r1",
+        "name": "Rest 1",
+        "latitude": 16.0,
+        "longitude": 108.2,
+        "is_indoor": true,
+        "category": "restaurant"
+      },
+      {
+        "place_id": "r2",
+        "name": "Rest 2",
+        "latitude": 16.0,
+        "longitude": 108.2,
+        "is_indoor": true,
+        "category": "restaurant"
+      },
+      {
+        "place_id": "r3",
+        "name": "Rest 3",
+        "latitude": 16.0,
+        "longitude": 108.2,
+        "is_indoor": true,
+        "category": "restaurant"
+      },
+      {
+        "place_id": "r4",
+        "name": "Rest 4",
+        "latitude": 16.0,
+        "longitude": 108.2,
+        "is_indoor": true,
+        "category": "restaurant"
+      }
+    ],
+    "opening_hours": null,
+    "distance_matrix": null,
+    "trip_plan_context": {
+      "duration_days": 1,
+      "location": "Da Nang",
+      "planning_mode": "heuristic_v3",
+      "days": [
+        {
+          "day": 1,
+          "theme": "Explore Da Nang",
+          "primary_area": "Da Nang",
+          "stops": [
+            {
+              "order": 1,
+              "place_id": "r0",
+              "name": "Rest 0",
+              "lat": 16.0,
+              "lon": 108.2,
+              "time_block": "breakfast",
+              "planned_time": "08:00",
+              "planned_time_window": "07:30 - 09:00",
+              "is_indoor": true,
+              "category": "restaurant"
+            },
+            {
+              "order": 2,
+              "place_id": "a1",
+              "name": "Beach",
+              "lat": 16.0,
+              "lon": 108.2,
+              "time_block": "morning_activity",
+              "planned_time": "10:00",
+              "planned_time_window": "09:00 - 12:00",
+              "is_indoor": false,
+              "category": "attraction"
+            },
+            {
+              "order": 3,
+              "place_id": "r1",
+              "name": "Rest 1",
+              "lat": 16.0,
+              "lon": 108.2,
+              "time_block": "lunch",
+              "planned_time": "12:30",
+              "planned_time_window": "12:00 - 13:30",
+              "is_indoor": true,
+              "category": "restaurant"
+            },
+            {
+              "order": 4,
+              "place_id": "a2",
+              "name": "Museum",
+              "lat": 16.0,
+              "lon": 108.2,
+              "time_block": "afternoon_activity",
+              "planned_time": "15:00",
+              "planned_time_window": "13:30 - 17:30",
+              "is_indoor": true,
+              "category": "attraction"
+            },
+            {
+              "order": 5,
+              "place_id": "r2",
+              "name": "Rest 2",
+              "lat": 16.0,
+              "lon": 108.2,
+              "time_block": "dinner",
+              "planned_time": "18:30",
+              "planned_time_window": "18:00 - 20:00",
+              "is_indoor": true,
+              "category": "restaurant"
+            }
+          ],
+          "backup_options": [
+            {
+              "place_id": "danang_cham_museum",
+              "name": "Cham Museum",
+              "reason": "Indoor backup"
+            },
+            {
+              "place_id": "danang_han_market",
+              "name": "Han Market",
+              "reason": "Indoor backup"
+            },
+            {
+              "place_id": "danang_lotte_mart",
+              "name": "Lotte Mart",
+              "reason": "Indoor backup"
+            },
+            {
+              "place_id": "danang_vincom_plaza",
+              "name": "Vincom Plaza",
+              "reason": "Indoor backup"
+            }
+          ],
+          "date": null,
+          "weather_condition": null,
+          "temp_range": null,
+          "rain_prob": null
+        }
+      ],
+      "weather_aware": true
+    },
+    "time_range_resolved": null,
+    "external_risk_data": null
+  },
+  "weather_data_quality": {
+    "missing_fields": [],
+    "confidence": "high",
+    "notes": [
+      "Mock good-weather case for model benchmarking."
+    ]
+  },
+  "prediction_engine_result": {
+    "domain": "tourism",
+    "prediction_summary": "Simulated prediction summary",
+    "recommendation_summary": "Simulated recommendation summary",
+    "risk_assessment": {
+      "overall_risk": "low"
+    },
+    "evidence": [
+      "Evidence 1"
+    ],
+    "warnings": [],
+    "weather_stats": {}
+  },
+  "required_output_schema": {
+    "prediction": "string \u2014 1-2 sentence weather prediction",
+    "recommendation": "string \u2014 concrete action recommendation",
+    "explanation": "string \u2014 brief explanation of why this advice is given",
+    "final_answer": "string \u2014 concise, user-friendly summary answer (3-5 sentences)"
+  },
+  "hard_rules": [
+    "Do not change risk levels from the prediction_engine_result.",
+    "Do not add typhoon, flood, or official warning unless present in input.",
+    "Base recommendations only on the provided evidence and context.",
+    "Return valid JSON matching the required_output_schema."
+  ]
+}
+
