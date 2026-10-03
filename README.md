@@ -1,4 +1,31 @@
-# 🌦️ Weatherise — Multi-Agent System for Multi-Domain Optimization in Da Nang City
+# WeatherRise / Weatherise
+
+**Weather-aware planning with domain-specific AI agents.**
+
+A team project exploring how weather, external data, and domain rules can inform tourism, construction, and agriculture planning. The repository contains the agent/backend implementation and web application.
+
+## My contributions
+
+- [Intelligence-layer changes](https://github.com/khanhtuongnakitomo/WeatherRise-2026/pull/23).
+- [LLM parser work](https://github.com/khanhtuongnakitomo/WeatherRise-2026/pull/27).
+- [Multiple-source integration](https://github.com/khanhtuongnakitomo/WeatherRise-2026/pull/30).
+- [Vietnamese response support](https://github.com/khanhtuongnakitomo/WeatherRise-2026/pull/35).
+
+## Explore the project
+
+| Component | Focus |
+| --- | --- |
+| Agents | Domain-aware context gathering and planning |
+| Retrieval and integrations | Knowledge and external weather/data sources |
+| Web application | User-facing planning interface |
+
+**Stack:** Python, LangGraph, retrieval integrations, and a web frontend. This is a team-built implementation under development. The team architecture and feature descriptions below include intended capabilities; external services, credentials, datasets, and end-to-end validation are required before treating those descriptions as operational guarantees.
+
+[My portfolio](https://github.com/khanhtuongnakitomo)
+
+---
+
+## Developer documentation
 
 > **Team:** Weatherise (4 members)  
 > **Role:** Developed under the direction of **Team Lead**  
